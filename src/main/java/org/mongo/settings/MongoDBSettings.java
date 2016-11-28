@@ -6,14 +6,24 @@ package org.mongo.settings;
 public class MongoDBSettings {
 
     private String host = "localhost";
-    private String port = "27017";
+    private int port = 27017;
     private String database = "presentation";
+    private String collections = "users";
+
+    public void setCollections(String collections) {
+        this.collections = collections;
+    }
+
+    public String getCollections() {
+
+        return collections;
+    }
 
     public void setHost(String host) {
         this.host = host;
     }
 
-    public void setPort(String port) {
+    public void setPort(int port) {
         this.port = port;
     }
 
@@ -22,11 +32,10 @@ public class MongoDBSettings {
     }
 
     public String getHost() {
-
         return host;
     }
 
-    public String getPort() {
+    public int getPort() {
         return port;
     }
 
