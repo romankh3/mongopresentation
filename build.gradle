@@ -1,0 +1,25 @@
+group 'mongopresentation'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    // mongo driver:
+    def mongoDriver = "3.3.0"
+    compile "org.mongodb:mongodb-driver:${mongoDriver}"
+    compile "org.mongodb:bson:${mongoDriver}"
+    compile "org.mongodb:mongodb-driver-core:${mongoDriver}"
+
+    // mongodb ODM
+    compile "org.mongodb.morphia:morphia:1.2.1"
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
