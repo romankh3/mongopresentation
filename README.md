@@ -1,2 +1,2 @@
 # mongopresentation
-app for presentation NoSQL database MongoDB. 
+app for presentation connection to NoSQL database MongoDB. 
