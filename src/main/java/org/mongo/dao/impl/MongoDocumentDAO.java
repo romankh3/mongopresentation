@@ -1,9 +1,10 @@
-package org.mongo.dao;
+package org.mongo.dao.impl;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.mongo.dao.IMongoDBDAO;
 import org.mongo.domain.User;
 import org.mongo.settings.MongoDBSettings;
 import org.mongo.settings.MongoDatabaseConnector;
@@ -15,7 +16,7 @@ import java.util.Map;
 /**
  * @author rbeskrovnyi
  */
-public class MongoDocumentDAO {
+public class MongoDocumentDAO implements IMongoDBDAO {
 
     private MongoCollection<Document> collection;
     private MongoDatabase database;
@@ -60,7 +61,7 @@ public class MongoDocumentDAO {
     private static User convertDocumentToUser(Document document){
         User user = new User();
         user.setName((String) document.get("name"));
-        user.setAge(Integer.parseInt((String) document.get("age")));
+        user.setAge((Integer) document.get("age"));
         user.setSkills((Map<String, String>) document.get("skills"));
         return user;
     }

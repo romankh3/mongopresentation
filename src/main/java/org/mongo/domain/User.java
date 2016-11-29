@@ -1,11 +1,20 @@
 package org.mongo.domain;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+
 import java.util.Map;
 
 /**
  * @author rbeskrovnyi
  */
+@Entity("users")
 public class User {
+
+    @Id
+    private ObjectId id;
+
     private String name;
     private int age;
     private Map<String,String> skills;

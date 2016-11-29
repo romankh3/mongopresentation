@@ -1,6 +1,8 @@
 package org.mongo.presentation;
 
-import org.mongo.dao.MongoDocumentDAO;
+import org.mongo.dao.IMongoDBDAO;
+import org.mongo.dao.impl.MongoDocumentDAO;
+import org.mongo.dao.impl.MongoMorphiaDAO;
 import org.mongo.domain.User;
 import org.mongo.settings.MongoDBSettings;
 
@@ -14,8 +16,12 @@ public class MainClass {
 
     public static void main(String[] args) {
         User john = getUser();
-        MongoDocumentDAO documentDAO = new MongoDocumentDAO(new MongoDBSettings());
+        MongoDBSettings settings = new MongoDBSettings();
+        IMongoDBDAO documentDAO = new MongoDocumentDAO(settings);
+        IMongoDBDAO morphiaDAO = new MongoMorphiaDAO(settings);
+
         documentDAO.insert(john);
+        morphiaDAO.insert(john);
     }
 
     public static User getUser(){

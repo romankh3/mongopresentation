@@ -1,6 +1,7 @@
 package org.mongo.dao;
 
 import org.junit.Test;
+import org.mongo.dao.impl.MongoDocumentDAO;
 import org.mongo.domain.User;
 import org.mongo.settings.MongoDBSettings;
 
@@ -14,8 +15,8 @@ import java.util.List;
  */
 public class MongoDocumentDAOTest {
 
-    private MongoDocumentDAO documentDAO;
-    MongoDBSettings settings;
+    private IMongoDBDAO documentDAO;
+    private MongoDBSettings settings;
 
     public MongoDocumentDAOTest(){
         settings = new MongoDBSettings();
@@ -24,7 +25,7 @@ public class MongoDocumentDAOTest {
     }
 
     @Test
-    public void dbOperation(){
+    public void dbOperations(){
         User user = MainClass.getUser();
 
         documentDAO.insert(user);
@@ -36,7 +37,8 @@ public class MongoDocumentDAOTest {
         documentDAO.remove(user);
 
         users = documentDAO.find(user);
-        assertTrue(users.isEmpty());
+
+        assertTrue("users is not empty!",users.isEmpty());
 
         documentDAO.dropCollection(settings.getCollections());
     }
