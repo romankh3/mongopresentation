@@ -18,7 +18,7 @@ public class MainClass {
         documentDAO.insert(john);
     }
 
-    private static User getUser(){
+    public static User getUser(){
         User user = new User();
         user.setName("John");
         user.setAge(21);

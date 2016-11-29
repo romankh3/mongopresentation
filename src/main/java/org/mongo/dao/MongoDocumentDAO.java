@@ -52,7 +52,7 @@ public class MongoDocumentDAO {
     private static Document convertUserToDocument(User user){
         Document document = new Document();
         document.append("name",user.getName())
-                .append("age",user.getName())
+                .append("age",user.getAge())
                 .append("skills",user.getSkills());
         return document;
     }
@@ -60,7 +60,7 @@ public class MongoDocumentDAO {
     private static User convertDocumentToUser(Document document){
         User user = new User();
         user.setName((String) document.get("name"));
-        user.setAge((Integer) document.get("age"));
+        user.setAge(Integer.parseInt((String) document.get("age")));
         user.setSkills((Map<String, String>) document.get("skills"));
         return user;
     }
